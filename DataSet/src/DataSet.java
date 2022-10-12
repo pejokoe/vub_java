@@ -49,14 +49,14 @@ public class DataSet {
 		return Arrays.toString(data);
 	}
 	
-	public static void main(String[] args) {
-		double[] init = {1.1, 2.2, 20.4, 3.3, 4.4, 0.5};
-		DataSet test = new DataSet(init);
-		System.out.println(test.getAverage());
-		test.add(11.11);
-		System.out.println(test.get());
-		System.out.println(test.getSmallest());
-		System.out.println(test.getLargest());
-		System.out.println(test.getRange());
-	}
+//	public static void main(String[] args) {
+//		double[] init = {1.1, 2.2, 20.4, 3.3, 4.4, 0.5};
+//		DataSet test = new DataSet(init);
+//		System.out.println(test.getAverage());
+//		test.add(11.11);
+//		System.out.println(test.get());
+//		System.out.println(test.getSmallest());
+//		System.out.println(test.getLargest());
+//		System.out.println(test.getRange());
+//	}
 }
