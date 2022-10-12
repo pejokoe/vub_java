@@ -8,7 +8,7 @@ public class FizzBuzz {
 		this.end = end;
 		
 		//not for dodona
-		//fizzBuzz();
+//		fizzBuzz();
 	}
 
 	public void fizzBuzz() {
@@ -32,7 +32,7 @@ public class FizzBuzz {
 		fizzBuzz();
 	}
 	
-	public static void main(String[] args) {
-		FizzBuzz fb = new FizzBuzz(0, 20);
-	}
+//	public static void main(String[] args) {
+//		FizzBuzz fb = new FizzBuzz(0, 20);
+//	}
 }
