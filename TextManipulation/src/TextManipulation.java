@@ -37,12 +37,17 @@ public class TextManipulation {
 
 	public String caesarCipherCode(String input, int cipherShift) {
 		char[] letters = input.toLowerCase().toCharArray();
+		String symbols_string = "abcdefghijklmnopqrstuvwxyz0123456789";
+		char[] symbols_array = symbols_string.toCharArray();
+		
+		//if cipherShift is negative, invert 
 		if (cipherShift < 0)
-			cipherShift = 26 + cipherShift % 26;
+			cipherShift = 36 + cipherShift % 36;
+		
 		for (int i = 0; i < letters.length; i++) {
-			if ('a' <= letters[i] && letters[i] <= 'z') {
-				int tmp = (((int) letters[i] - 97) + cipherShift) % 26;
-				letters[i] = (char) (tmp + 97);
+			if (symbols_string.indexOf(letters[i])!=-1) {
+				int tmp = (symbols_string.indexOf(letters[i]) + cipherShift) % 36;
+				letters[i] = symbols_array[tmp];
 			}
 		}
 		return new String(letters);
@@ -56,13 +61,13 @@ public class TextManipulation {
 		TextManipulation test = new TextManipulation();
 		System.out.println(test.isAnagram("Peter", "ReetP"));
 		System.out.println(test.reversString("gfedcba"));
+		System.out.println((int)'1');
 		System.out.println(test.caesarCipherCode(
 				"Ftq cguow ndaiz raj\n"
 				+ "vgybe ahqd ftq xmlk pas.\n"
 				+ "Ftq ruhq najuzs\n"
-				+ "iulmdpe vgyb cguowxk.",
-				-12));
+				+ "iulmdp23e vgyb cguowxk.",
+				1));
 //		System.out.println(test.caesarCipherDecode(test.caesarCipherCode("abcd", -60), -60));
-
 	}
 }
