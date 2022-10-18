@@ -72,12 +72,29 @@ public class Calculator {
 		return (int) Math.pow((int)base, (int)exponent);
 	}
 	
+	public boolean isPrime(int number) {
+		for (int i = 2; i < number/2; i++) {
+			if (number%i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public int fibonacciNumber(int N) {
+		int a = 1;
+		int b = 1;
+		int sum = 0;
+		
+	}
+	
 	public static void main(String[] args) {
 		Calculator test = new Calculator();
 		double a = test.divide(3, 0);
 		System.out.println(a);
 		int b = test.divideInt(5, 2);
 		System.out.println(b);
+		System.out.println(test.isPrime(1201));
 		
 	}
 }
