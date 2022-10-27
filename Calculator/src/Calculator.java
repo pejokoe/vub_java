@@ -73,7 +73,8 @@ public class Calculator {
 	}
 	
 	public boolean isPrime(int number) {
-		for (int i = 2; i < number/2; i++) {
+		if (number <= 1) return false;
+		for (int i = 2; i <= number/2; i++) {
 			if (number%i == 0) {
 				return false;
 			}
@@ -82,11 +83,12 @@ public class Calculator {
 	}
 	
 	public int fibonacciNumber(int N) {
-		if (N <=0 ) return -1;
-		int a = 1;
+		if (N < 0 ) return -1;
+		if (N == 0) return 0;
+		int a = 0;
 		int b = 1;
 		int tmp;
-		for (int i = 0; i < N - 2; i++) {
+		for (int i = 0; i < N - 1; i++) {
 			tmp = b;
 			b += a;
 			a = tmp;
@@ -96,6 +98,7 @@ public class Calculator {
 	}
 	
 	public boolean armstrongNumbers(int number, int power) {
+		if (number == 0) return true;
 		char[] digits = String.valueOf(number).toCharArray();
 		int tmp = 0;
 		for (int i = 0; i < digits.length; i++) {
@@ -148,7 +151,7 @@ public class Calculator {
 		System.out.println(b);
 		System.out.println(test.isPrime(1201));
 		System.out.println(test.fibonacciNumber(37));
-		System.out.println(test.armstrongNumbers(548834, 6));
+		System.out.println("Armstrong: " + String.valueOf(test.armstrongNumbers(0, 0)));
 		System.out.println(test.factorial(17));
 		System.out.println(test.numberReversal(123));
 		int[] arr1 = new int[] {1, 2, 3, -4, -5};
