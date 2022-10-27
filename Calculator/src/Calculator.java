@@ -82,10 +82,62 @@ public class Calculator {
 	}
 	
 	public int fibonacciNumber(int N) {
+		if (N <=0 ) return -1;
 		int a = 1;
 		int b = 1;
-		int sum = 0;
+		int tmp;
+		for (int i = 0; i < N - 2; i++) {
+			tmp = b;
+			b += a;
+			a = tmp;
+		}
+		return b;
 		
+	}
+	
+	public boolean armstrongNumbers(int number, int power) {
+		char[] digits = String.valueOf(number).toCharArray();
+		int tmp = 0;
+		for (int i = 0; i < digits.length; i++) {
+			tmp += Math.pow(Character.getNumericValue(digits[i]), power);
+		}
+		return (number == tmp); 
+	}
+	
+	public long factorial(int N) {
+		if(N>0) {
+			return N * factorial(N-1);
+		} else {
+			return 1;
+		}
+	}
+	
+	public int numberReversal(int number) {
+		char [] digits = String.valueOf(number).toCharArray();
+		System.out.println(digits.getClass());
+		char [] reverse = new char[digits.length];
+		for (int i = 0; i < digits.length; i++) {
+			reverse[i] = digits[digits.length-1-i];
+		}
+		return Integer.parseInt(new String(reverse));
+		
+	}
+	
+	public int[] productMaximiser(int[]a, int[]b) {
+		int max = 0;
+		int idxA = -1;
+		int idxB = -1;
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < b.length; j++) {
+				if (a[i] * b[j] > max) {
+					max = a[i] * b[j];
+					idxA = i;
+					idxB = j;
+				}
+			}
+		}
+		int [] ret = new int[] {idxA, idxB};
+		return ret;
 	}
 	
 	public static void main(String[] args) {
@@ -95,6 +147,13 @@ public class Calculator {
 		int b = test.divideInt(5, 2);
 		System.out.println(b);
 		System.out.println(test.isPrime(1201));
-		
+		System.out.println(test.fibonacciNumber(37));
+		System.out.println(test.armstrongNumbers(548834, 6));
+		System.out.println(test.factorial(17));
+		System.out.println(test.numberReversal(123));
+		int[] arr1 = new int[] {1, 2, 3, -4, -5};
+		int[] arr2 = new int[] {3, 20, 4, -26, 10};
+		int[] result = test.productMaximiser(arr1, arr2);
+		System.out.printf("%d, %d", result[0], result[1]);
 	}
 }
