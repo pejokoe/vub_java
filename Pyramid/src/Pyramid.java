@@ -37,18 +37,4 @@ public class Pyramid {
 			return area;
 		}
 	}
-	
-	//main function
-//	public static void main(String [] args) {
-//		if (args.length != 3) {
-//			System.out.println("Not enough parameters!");
-//			return;
-//		}
-//		double l = Double.parseDouble(args[0]);
-//		double h = Double.parseDouble(args[1]);
-//		int s = Integer.parseInt(args[2]);
-//		Pyramid p = new Pyramid(l, h, s);
-//		System.out.println("The volume of the pyramid is:");
-//		System.out.println(p.getVolume());
-//	}
 }
