@@ -7,35 +7,44 @@ public class BankAccount {
         /***
         Constructor
         ***/
+    	this.uniqueID = uniqueID;
+    	this.balance = amount;
     }
 
     public void addToBalance(double amount){
         /***
          Add to an account
          ***/
+    	this.balance += amount;
     }
 
     public boolean canBeRemovedFromBalance(double amount){
         /***
          Check if the balance can be removed from an account
          ***/
+    	return this.balance - amount > 0;
     }
 
     public void removeFromBalance(double amount){
         /***
          Remove from an account if the conditions are valid
          ***/
+    	if (this.canBeRemovedFromBalance(amount)) {
+    		this.balance -= amount;
+    	}
     }
 
     public double getBalance() {
         /***
          Getter
          ***/
+    	return this.balance;
     }
 
     public int getID() {
         /***
          Getter
          ***/
+    	return this.uniqueID;
     }
 }
