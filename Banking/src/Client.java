@@ -20,6 +20,7 @@ public class Client {
     	this.age = age;
     	this.IDnumber = IDnumber;
     	this.adress = adress;
+    	accounts = new ArrayList<>();
     }
 
     public void addAccount(BankAccount bankAccount){
