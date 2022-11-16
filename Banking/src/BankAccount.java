@@ -1,8 +1,10 @@
-public class BankAccount {
+public class BankAccount implements Comparable{
 
     private int uniqueID;
     private double balance;
 
+    
+    
     public BankAccount(int uniqueID, double amount){
         /***
         Constructor
@@ -47,4 +49,10 @@ public class BankAccount {
          ***/
     	return this.uniqueID;
     }
+
+    //for interface
+	public int compareTo(Object obj) {
+		// TODO Auto-generated method stub
+		return this.getID() - ((BankAccount)obj).getID();
+	}
 }
