@@ -46,7 +46,7 @@ public class BankTest {
     public void testLogInLogOut() throws IOException {
         System.out.println(bank.getClients());
         for(Client client: bank.getClients()){
-            bank.logIn(client.getBankID(), client.getPin());
+            bank.logIn(client.getBankID(), client.getBankID());
             bank.displayAccounts();
             String accounts = output.toString();
             Assert.assertEquals("Login incorrect", false, accounts.isEmpty());
@@ -76,7 +76,7 @@ public class BankTest {
             bank.addAccount(client, 2750);
             bank.addAccount(client, 12000);
             bank.addAccount(client, 24000);
-            bank.logIn(client.getBankID(), client.getPin());
+            bank.logIn(client.getBankID(), client.getBankID());
             bank.addAccount(client, 2541);
             int numberOfAccounts = client.getAccounts().size();
             Assert.assertEquals("Incorrect number of accounts", 4, numberOfAccounts);

@@ -107,7 +107,7 @@ public class Bank {
         /***
     	Getter
     	***/
-    	
+    	return uniqueIDClient;
     }
 
     public Client getCurrentClient(){
