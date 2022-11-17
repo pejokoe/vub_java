@@ -1,0 +1,10 @@
+public class A{
+  int a = 100;
+  public void display(){
+    System.out.printf("a in A = $d\n", a);
+  }
+}
+
+Description	Resource	Path	Location	Type
+The project was not built due to "release 17 is not found in the system". Fix the problem, then try refreshing this project and building it since it may be inconsistent	Banking		Unknown	Java Problem
+
