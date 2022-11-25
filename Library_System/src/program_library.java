@@ -16,26 +16,30 @@ public class program_library {
 		User Max = new User("Max");
 		User Frank = new User("Frank");
 
-		// Setup
+		// setup
 		myLibrary.addUser(Max);
 		myLibrary.addUser(Frank);
-		myLibrary.printBooks();
+		//myLibrary.printBooks();
 
-		// Test checkout book
+		// test checkout book
 		myLibrary.checkOutBook(Frank, HP.get(4));
-		myLibrary.printBooks();
+		//myLibrary.printBooks();
 
+		// checking out when user not a member
 		User noMember = new User("Dummie");
 		myLibrary.checkOutBook(noMember, HP.get(4));
-		myLibrary.printBooks();
+		//myLibrary.printBooks();
 
+		// checking out when book not in inventory
 		Book notInInventory = new Book("dummie");
 		myLibrary.checkOutBook(Frank, notInInventory);
-		myLibrary.printBooks();
+		//myLibrary.printBooks();
 
+		//exceeding the available number of books
 		myLibrary.checkOutBook(Frank, HP.get(0));
 		myLibrary.checkOutBook(Max, HP.get(0));
 
+		//contact users with their name, number and list of checked out books
 		myLibrary.contactAllCheckedOut();
 		myLibrary.giveBack(Frank, HP.get(4));
 		myLibrary.contactAllCheckedOut();
