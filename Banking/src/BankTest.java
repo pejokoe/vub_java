@@ -39,6 +39,7 @@ public class BankTest {
         for (int i = 0; i < NUMBER_OF_CLIENTS; i++) {
             Client newClient = this.clients.get(i);
             this.bank.addNewClient(newClient, i);
+            this.bank.addAccount(newClient, 0);
         }
     }
 

@@ -41,25 +41,28 @@ public class Bank {
     	If the user is unable to provide the correct information, the following sentence should be displayed: 
     	"This user is not know to the bank, please check if you gave the correct ID and PIN!"
     	***/
+    	boolean success = false;
     	for (int i = 0; i < clients.size(); i++) {
     		if (clients.get(i).getBankID() == id && clients.get(i).getPin() == pin) {
     			if (this.currentClient != null) {
     	    		this.logOut();
     	    	}
     			currentClient = clients.get(i);
+    			success = true;
     			break;
     		}
     	}
-    	if (this.currentClient != null) {
-    		this.logOut();
+    	if (! success) {
+    		System.out.println("This user is not know to the bank, please check if you gave the correct ID and PIN!");
     	}
+    	
     }
 
     public void addAccount(Client client, double amount) {
         /***
     	Add an account, if all input valid in this method?
     	***/
-    	if (amount > 0 && client == currentClient) {
+    	if (amount > 0) {
     		BankAccount tmp = new BankAccount(uniqueIDAccounts++, amount);
     		client.addAccount(tmp);
     	}
@@ -70,9 +73,12 @@ public class Bank {
     	Remove an account, the user can transfer the money in the 'toRemove' account to the 'transferAccount'.
     	***/
 		if (currentClient.getAccounts().contains(toRemove)) {
-			transferAccount.addToBalance(toRemove.getBalance());
+			if (transferAccount != null) {
+				transferAccount.addToBalance(toRemove.getBalance());
+			}
+			currentClient.removeAccount(toRemove);
 		}
-    	
+
     }
 
 
@@ -81,27 +87,38 @@ public class Bank {
     	Transfer from 'transferFrom' to 'TransferTo' with a given ammount?
     	Can anyone transfer, what with people that are not part of the bank?
     	***/
-    	if (currentClient.getAccounts().contains(transferFrom) && transferFrom.canBeRemovedFromBalance(amount)) {
+    	boolean is_costumer1 = false;
+    	boolean is_costumer2 = false;
+    	for (int i = 0; i < clients.size(); i++) {
+    		if (clients.get(i).getAccounts().contains(transferFrom)) {
+    			is_costumer1 = true;
+    		}
+    		if (clients.get(i).getAccounts().contains(transferTo)) {
+    			is_costumer2 = true;
+    		}
+    	}
+    	if ( is_costumer1 && is_costumer2 && transferFrom.canBeRemovedFromBalance(amount)) {
     		transferFrom.removeFromBalance(amount);
     		transferTo.addToBalance(amount);
     		
     	}
     }
 
-    public void displayAccounts() {
-        /***
-    	Give a display to the user what accounts are associated with them.
-    	Give info abouth the index (for easy access), the ID and the amount.
-    	***/
-    	System.out.println("Your accounts are:");
-    	List<BankAccount> tmp = currentClient.getAccounts();
-    	for (int i = 0; i < tmp.size(); i++) {
-    		System.out.printf("Account %d: \n", i);
-    		System.out.printf("  Account id: %d \n", tmp.get(i).getID());
-    		System.out.printf("  Balance: %f \n", tmp.get(i).getBalance());
-    	}
-    	
-    }
+	public void displayAccounts() {
+		/***
+		 * Give a display to the user what accounts are associated with them. Give info
+		 * abouth the index (for easy access), the ID and the amount.
+		 ***/
+		if (currentClient != null) {
+			System.out.println("Your accounts are:");
+			List<BankAccount> tmp = currentClient.getAccounts();
+			for (int i = 0; i < tmp.size(); i++) {
+				System.out.printf("Account %d: \n", i);
+				System.out.printf("  Account id: %d \n", tmp.get(i).getID());
+				System.out.printf("  Balance: %f \n", tmp.get(i).getBalance());
+			}
+		}
+	}
 
     public int maxIDClient(){
         /***
